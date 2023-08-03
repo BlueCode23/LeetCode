@@ -1,0 +1,14 @@
+"""
+For each element i , we compare it with element i-2
+if the elements are different, we dont have a group of more than 2 of that element, we overwrite the last non-twice-repeated element by the current read element and we go to element i+1
+if the elements are equal, we do not increase i, meaning the current element will be next replaced when we find a non-twice-repeated element
+"""
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        i = 0
+        for n in nums :
+            if i < 2 or n != nums[i-2]:
+                nums[i] = n
+                i += 1
+        return i
