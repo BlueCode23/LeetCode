@@ -1,0 +1,12 @@
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        i = len(digits) - 1 #we address the last index, so length-1
+        digits[i] += 1
+        while digits[i] == 10 :
+            digits[i] = 0 #when a digit is equal to 10, we reduce it to 0 to increase the one before
+            if i == 0: #if that was the last digit of the list, we have to insert a new digit
+                digits.insert(0,1)
+            else : #if that was not the last one, we increase the one before and go to check if its 10
+                digits[i-1] += 1
+                i -= 1
+        return digits
