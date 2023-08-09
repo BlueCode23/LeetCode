@@ -42,8 +42,7 @@ class Solution:
             elif num >= 4 :
                 num -= 4
                 roman += "IV"
-            elif num >= 1 :
+            else :
                 num -= 1
                 roman += "I"
         return roman
-            
