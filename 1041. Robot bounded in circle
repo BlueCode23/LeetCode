@@ -1,0 +1,24 @@
+class Solution:
+    def isRobotBounded(self, instructions: str) -> bool:
+        position = [0,0]
+        direction = (0,1)
+        #north (0,1)
+        #east (1,0)
+        #south (0,-1)
+        #west (-1,0)
+
+        for i in instructions:
+            match i:
+                case "G":
+                    position[0] += direction[0]
+                    position[1] += direction[1]
+                case "L":
+                    direction = (-direction[1], direction[0])
+                case "R":
+                    direction = (direction[1], -direction[0])
+
+        return position == [0,0] or direction != (0,1)
+        #either we got back to the initial position OR we are now pointing south, which will make the robot
+        #do the same arbitrary movement in opposite direction
+        #OR we are pointing east which means the arbitrary movement will happen east, south and then west, effectively
+        #canceling out (same goes if we point west)
