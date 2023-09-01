@@ -1,3 +1,19 @@
 # trivial solution
 
 return haystack.find(needle)
+
+#bruteforce
+
+#iterate through haystack, minus the length of needle (except first character)
+for i in range(len(haystack)-len(needle)+1):
+    #when the current character in haystack matches the first of needle, check if we encountered the needle
+    if haystack[i] == needle[0]:
+        #initialize a counter
+        j = 0
+        #while the current character is equal to the character in needle, increase counter and check
+        while needle[j] == haystack[i+j]:
+            j+=1
+            #when the counter is equal to the length of needle, the whole word has been found, return where it started
+            if j == len(needle):
+                return i
+return -1
