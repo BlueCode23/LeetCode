@@ -1,0 +1,20 @@
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        #use a set to store encountered elements
+        #check if elem is already in set
+        #if no, keep going and add it
+        #if yes return True
+
+        #I do not use a dictionnary because the content is unordered and unchangeable
+
+        encountered = set(())
+
+        for i in range(len(nums)):
+            #print(nums[i])
+            if nums[i] in encountered:
+                return True
+            else:
+                encountered.add(nums[i])
+
+        return False
+        
