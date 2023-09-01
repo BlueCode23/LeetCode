@@ -1,0 +1,3 @@
+# trivial solution
+
+return haystack.find(needle)
