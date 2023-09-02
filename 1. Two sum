@@ -1,0 +1,15 @@
+##Solution 1 : Bruteforce
+        
+        #left and right pointer approach
+        #left = 0
+        # right = left + 1
+        #increment right until end of array
+        #return left and right when their sum equals the target
+        #increment left by 1
+        #when left = last element of array, return False
+
+        for i in range(len(nums)):
+            left = i
+            for right in range(left+1,len(nums)):
+                if nums[left] + nums[right] == target:
+                    return [left, right]
