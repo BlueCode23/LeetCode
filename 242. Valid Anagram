@@ -1,0 +1,19 @@
+    def isAnagram(self, s: str, t: str) -> bool:
+        #use a dictionnary to store all letters of s
+        #parse through t while checking for each letter if it is in dictionary
+        #return false if a letter isnt
+        #at the end of t, return True if dictionary s has only 0 values, false otherwise
+
+
+        encountered = defaultdict(int)
+
+        for i in s:
+            encountered[i] += 1
+        for i in t:
+            encountered[i] -= 1
+
+        for i in encountered.values():
+            if i != 0:
+                return False
+
+        return True
