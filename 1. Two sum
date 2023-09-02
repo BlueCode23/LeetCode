@@ -1,4 +1,4 @@
-##Solution 1 : Bruteforce
+##Solution 1 : Bruteforce with left and right pointers
         
         #left and right pointer approach
         #left = 0
@@ -13,3 +13,22 @@
             for right in range(left+1,len(nums)):
                 if nums[left] + nums[right] == target:
                     return [left, right]
+
+ ##Solution 2 : hashmap approach
+
+        #iterate over array
+        #when encountering new element, calculate difference between target and element
+        #look up the hashtable if the difference is present
+        #if yes, return index of current element and index of stored element
+        #if no add element with its index as key to hashtable
+        #keep iterating
+
+        encountered = {} #val : index
+
+        for i in range(len(nums)):
+
+            difference = target - nums[i]
+            if difference in encountered :
+                return i, encountered[difference]
+            else:
+                encountered[nums[i]] = i #updates the hashmap with {number : index} number is key, index is value
