@@ -1,4 +1,6 @@
     def isAnagram(self, s: str, t: str) -> bool:
+
+## solution 1 : hashmap
         #use a dictionnary to store all letters of s
         #parse through t while checking for each letter if it is in dictionary
         #return false if a letter isnt
@@ -17,3 +19,6 @@
                 return False
 
         return True
+## solution 2  : sorted and equal
+        #if the strings are anagram, sorting both of them will yield the same result
+        return sorted(s) == sorted(t)
