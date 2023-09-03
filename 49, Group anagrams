@@ -1,0 +1,10 @@
+        result = defaultdict(list) # maps char Counts to list of anagrams
+
+        for word in strs :
+            charCount = [0] * 26 #every letter counted is going to be a-z
+
+            for c in word:
+                charCount[ord(c) - ord("a")] += 1 # ASCII value of current char
+
+            result[tuple(charCount)].append(word) #convert list to tuple because lists are mutable
+        return result.values()
