@@ -1,0 +1,24 @@
+#add open parenthesis to the stack
+        #a closed parenthesis must close the last open parenthesis
+        #we therefore pop last element of stack when encountering ( [ or { 
+        #and the top stack element must respectively be ) ] or }
+
+        for c in s:
+            if c in {"(","[","{"}:
+                stack.append(c)
+            else:
+                if stack:
+                    pop = stack.pop()
+                else:
+                    return False
+
+                if c == ")" and pop != "(":
+                    return False
+                elif c == "]" and pop != "[":
+                    return False
+                elif c == "}" and pop != "{":
+                    return False
+        if not stack:
+            return True
+        else:
+            return False
