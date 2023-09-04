@@ -1,0 +1,41 @@
+#this implementation will use an extra O(n) space memory, but is efficient timewise
+
+    def __init__(self):
+        #implement an array
+        #and another array, minimum array that keeps track fo minimum
+        self.content = []
+        self.min = []
+        
+
+    def push(self, val: int) -> None:
+        #add element at the last position of the array
+        self.content.append(val)
+        #add minimum to last position of the array, it's either the new value or the past minimum
+        self.min.append(val if not self.min else min (val, self.min[-1]))
+        
+
+    def pop(self) -> None:
+        #delete last element of the list and return its value
+        self.content.pop()
+        self.min.pop()
+        
+        
+
+    def top(self) -> int:
+        #return the last element of the list
+        return self.content[-1]
+        
+
+    def getMin(self) -> int:
+        #have another array, where we store the minimum element after each pop and push
+        return self.min[-1]
+
+        
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
