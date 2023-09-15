@@ -1,0 +1,22 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        import re
+
+        #convert to lowercase
+        s = s.lower()
+        #remove non alphanumeric characters
+        s = re.sub(r'[\W_]', '', s)
+
+        #beginning and end pointer
+        #are initialized at both ends of the string and will iterate over it, joining in the middle
+        #while beginning pointer is before end pointer, we keep comparing that they point to similar letters
+        #no need to compare once they cross in the middle as the whole word has been covered already
+        b = 0
+        e = len(s)-1
+        while b < e:
+            if s[b] != s[e]:
+                return False
+            else :
+                b += 1
+                e -= 1
+        return True
