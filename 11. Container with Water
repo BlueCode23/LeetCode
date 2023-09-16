@@ -33,3 +33,26 @@ class Solution:
                 r -= 1
 
         return maxSurface
+
+#move left and right pointers depending on which one has the less height
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+
+        #start at both ends of array
+        #compute surface
+        #update whichever pointer has the smallest height, as it is the limiting factor for surface
+        #by shifting it inwards of 1
+        #that way we only check combinations of pointers with maximal heights
+        maxSurface = 0
+        l = 0
+        r = len(height) -1
+
+        while l < r:
+            surface = (r - l) * min(height[l],height[r])
+            maxSurface = max(surface, maxSurface)
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+        return maxSurface
