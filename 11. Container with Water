@@ -1,0 +1,35 @@
+"""
+You are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
+
+Find two lines that together with the x-axis form a container, such that the container contains the most water.
+
+Return the maximum amount of water a container can store.
+
+Notice that you may not slant the container.
+
+"""
+
+#BRUTEFORCE
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        #initialize left pointer at 0 right at len(height) - 1
+        #keep track of max surface with variable
+        #l iterates through the array
+        #calculate current surface by multiplying (r-l) * min(heigt [r],height[l])
+        #compare currentSurface to maxSurface, update it
+        #decrease right pointer by 1
+        #increment left pointer by 1 when right is not more than left
+        #reset right pointer to position len(height) - 1
+
+        maxSurface = 0
+        #print(height)
+        for l in range(len(height)):
+            #print("l", l)
+            r = len(height) - 1
+            while l < r:
+                surface = (r-l)*min(height[r],height[l])
+                maxSurface = max(maxSurface,surface)
+                r -= 1
+
+        return maxSurface
