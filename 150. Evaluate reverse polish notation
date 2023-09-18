@@ -1,0 +1,57 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        #use stack approach
+        #iterate through list
+        #numbers, push them on stack
+        #operators, pop the two last numbers and perform operation
+        #push result on stack
+        #return value on top of stack at the end of the list
+
+        stack = []
+        #print(tokens)
+
+        for i in tokens:
+            if i.lstrip("-").isnumeric():
+                stack.append(i)
+                #print("added ", i, " to stack")
+                #print("new stack : ", stack)
+            elif i == "+":
+                #print("plus sign encountered")
+                #convert the popped value to int for operation to be performed
+                a = int(stack.pop())
+                b = int(stack.pop())
+                #convert back to str for stack coherence
+                stack.append(str(a+b))
+                #print("new stack: ",stack)
+            elif i == "-":
+                #print("minus sign encountered")
+                #convert the popped value to int for operation to be performed
+                b = int(stack.pop())
+                a = int(stack.pop())
+                #convert back to str for stack coherence
+                stack.append(str(a-b))
+                #print("new stack: ",stack)
+            elif i == "*":
+                print("times sign encountered")
+                #convert the popped value to int for operation to be performed
+                a = int(stack.pop())
+                b = int(stack.pop())
+                #convert back to str for stack coherence
+                stack.append(str(a*b))
+                #print("new stack: ",stack)
+            elif i == "/":
+                #print("divided sign encountered")
+                #convert the popped value to int for operation to be performed
+                b = int(stack.pop())
+                a = int(stack.pop())
+                #exclusive or, when one of them is negative
+                if bool(a < 0) != bool(b < 0):
+                    #when the result is negative, we add the remainder (-a modulo b)
+                    stack.append(str((a+(-a%b))//b))
+                else:
+                    stack.append(str(a//b))
+                #convert back to str for stack coherence
+                #the // operator truncates toward zero
+                print("new stack: ",stack)
+        
+        return int(stack.pop())
